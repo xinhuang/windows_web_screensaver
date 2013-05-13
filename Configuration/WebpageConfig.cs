@@ -15,7 +15,7 @@ namespace WebScreenSaver.Configuration
 
         public IDataSource DataSource { get; private set; }
 
-        private static string Path
+        public string Path
         {
             get { return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetCallingAssembly().Location), "url.txt"); }
         }

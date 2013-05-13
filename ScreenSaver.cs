@@ -9,41 +9,43 @@ namespace WebScreenSaver
         [STAThread]
         private static void Main(string[] args)
         {
+            var config = (WebpageConfig)Config.Current;
+
             if (args.Length <= 0)
             {
-                StartScreenSaver();
+                StartScreenSaver(config);
                 return;
             }
 
-            var config = (WebpageConfig) Config.Current;
             if (args[0].ToLower().Trim().Substring(0, 2) == "/c")
             {
-                var configForm = new ConfigForm { Urls = config.UrlText, Path = Config.Path };
+                var configForm = new ConfigForm { Urls = config.UrlText, Path = config.Path };
                 if (configForm.ShowDialog() == DialogResult.OK)
                 {
-                    Config.Save(configForm.Urls);
+                    config.Save(configForm.Urls);
                 }
             }
             else if (args[0].ToLower() == "/s")
             {
-                StartScreenSaver();
+                StartScreenSaver(config);
             }
         }
 
-        private static UrlDataSource LoadUrlList()
+        private static UrlDataSource LoadUrlList(WebpageConfig config)
         {
-            return new UrlDataSource(Config.Urls);
+            return new UrlDataSource(config.Urls);
         }
 
-        private static void StartScreenSaver()
+        private static void StartScreenSaver(WebpageConfig config)
         {
+            var urlDataSource = LoadUrlList(config);
             int screenCount = Screen.AllScreens.Length;
             var screensaverForms = new ScreensaverForm[screenCount];
 
             // Start the screen saver on all the displays the computer has
             for (int x = 0; x < screenCount; x++)
             {
-                screensaverForms[x] = new ScreensaverForm(x, LoadUrlList());
+                screensaverForms[x] = new ScreensaverForm(x, urlDataSource);
                 screensaverForms[x].Show();
             }
 
