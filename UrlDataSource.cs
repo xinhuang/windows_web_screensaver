@@ -2,17 +2,18 @@
 
 namespace WebScreenSaver
 {
-    internal class UrlList
+    internal class UrlDataSource : IDataSource
     {
         private const string DefaultUrl = "http://whatthecommit.com/";
         private List<string> _urlList = new List<string>();
         private int _listIndex;
 
-        public UrlList()
+        public UrlDataSource()
         {
+            _urlList.Add(DefaultUrl);
         }
 
-        public UrlList(IEnumerable<string> urls)
+        public UrlDataSource(IEnumerable<string> urls)
         {
             Assign(urls);
         }

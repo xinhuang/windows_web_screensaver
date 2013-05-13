@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using WebScreenSaver.Configuration;
 
 namespace WebScreenSaver
 {
@@ -14,9 +15,10 @@ namespace WebScreenSaver
                 return;
             }
 
+            var config = (WebpageConfig) Config.Current;
             if (args[0].ToLower().Trim().Substring(0, 2) == "/c")
             {
-                var configForm = new ConfigForm {Urls = Config.UrlText, Path = Config.Path};
+                var configForm = new ConfigForm { Urls = config.UrlText, Path = Config.Path };
                 if (configForm.ShowDialog() == DialogResult.OK)
                 {
                     Config.Save(configForm.Urls);
@@ -28,9 +30,9 @@ namespace WebScreenSaver
             }
         }
 
-        private static UrlList LoadUrlList()
+        private static UrlDataSource LoadUrlList()
         {
-            return new UrlList(Config.Urls);
+            return new UrlDataSource(Config.Urls);
         }
 
         private static void StartScreenSaver()

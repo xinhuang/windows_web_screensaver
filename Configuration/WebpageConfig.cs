@@ -1,19 +1,26 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace WebScreenSaver
+namespace WebScreenSaver.Configuration
 {
-    static internal class Config
+    internal class WebpageConfig : IConfig
     {
-        public static string Path
+        public IConfigTab CreateConfigTab()
+        {
+            return null;
+        }
+
+        public IDataSource DataSource { get; private set; }
+
+        private static string Path
         {
             get { return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetCallingAssembly().Location), "url.txt"); }
         }
 
-        public static IEnumerable<string> Urls
+        public IEnumerable<string> Urls
         {
             get
             {
@@ -23,7 +30,7 @@ namespace WebScreenSaver
             }
         }
 
-        public static IEnumerable<string> UrlText
+        public IEnumerable<string> UrlText
         {
             get
             {
@@ -39,7 +46,7 @@ namespace WebScreenSaver
             }
         }
 
-        public static void Save(IEnumerable<string> urls)
+        public void Save(IEnumerable<string> urls)
         {
             string text = urls.Aggregate(String.Empty, (current, url) => current + (url + Environment.NewLine));
             File.WriteAllText(Path, text);
