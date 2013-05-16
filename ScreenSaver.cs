@@ -7,13 +7,6 @@ namespace WebScreenSaver
 {
     public class ScreenSaver
     {
-        private static int _counter;
-
-        public static void IncCounter()
-        {
-            _counter++;
-        }
-
         [STAThread]
         private static void Main(string[] args)
         {
@@ -35,8 +28,6 @@ namespace WebScreenSaver
             {
                 StartScreenSaver();
             }
-
-            MessageBox.Show(_counter.ToString());
         }
 
         private static void StartScreenSaver()
@@ -49,6 +40,7 @@ namespace WebScreenSaver
             {
                 screensaverForms.Add(new ScreensaverForm(x, Config.CurrentView));
                 screensaverForms[x].Show();
+                break;
             }
 
             while (true)

@@ -8,11 +8,11 @@ namespace WebScreenSaver
     {
         // Store the number of displays
         private readonly int _thisDisplayIdId;
-        private readonly WebpageView _view;
+        private readonly UserControl _view;
         // Store the mouse coordinates
         private Point _mouseCoords;
 
-        internal ScreensaverForm(int thisDisplayId, WebpageView view)
+        internal ScreensaverForm(int thisDisplayId, UserControl view)
         {
             InitializeComponent();
             // Assign the number to an accessible variable

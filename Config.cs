@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace WebScreenSaver
 {
@@ -48,9 +49,10 @@ namespace WebScreenSaver
             get { return new UrlList(Urls); }
         }
 
-        public static WebpageView CurrentView
+        public static UserControl CurrentView
         {
-            get { return new WebpageView(UrlList); }
+            //get { return new WebpageView(UrlList); }
+            get { return new RandomTextView(new RandomTextConfig());}
         }
 
         public static void Save(IEnumerable<string> urls)
