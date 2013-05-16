@@ -1,6 +1,6 @@
 ﻿namespace WebScreenSaver
 {
-    interface IDataSource
+    public interface IDataSource
     {
         string GetNext();
     }

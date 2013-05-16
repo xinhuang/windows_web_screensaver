@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace WebScreenSaver.Configuration
 {
     internal class WebpageConfig : IConfig
     {
-        public IConfigTab CreateConfigTab()
-        {
-            return null;
-        }
-
         public IDataSource DataSource { get; private set; }
+        public TabPage Tab { get; private set; }
 
         public string Path
         {

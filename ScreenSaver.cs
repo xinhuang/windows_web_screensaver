@@ -9,7 +9,7 @@ namespace WebScreenSaver
         [STAThread]
         private static void Main(string[] args)
         {
-            var config = (WebpageConfig)Config.Current;
+            var config = (WebpageConfig)ConfigManager.CurrentMode;
 
             if (args.Length <= 0)
             {
@@ -19,10 +19,9 @@ namespace WebScreenSaver
 
             if (args[0].ToLower().Trim().Substring(0, 2) == "/c")
             {
-                var configForm = new ConfigForm { Urls = config.UrlText, Path = config.Path };
+                var configForm = new ConfigForm();
                 if (configForm.ShowDialog() == DialogResult.OK)
                 {
-                    config.Save(configForm.Urls);
                 }
             }
             else if (args[0].ToLower() == "/s")

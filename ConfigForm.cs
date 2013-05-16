@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using WebScreenSaver.Configuration;
 
 namespace WebScreenSaver
 {
@@ -10,29 +8,8 @@ namespace WebScreenSaver
         public ConfigForm()
         {
             InitializeComponent();
-        }
-
-        public IEnumerable<string> Urls
-        {
-            get
-            {
-                return from line in urlText.Text.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
-                       select line.Trim();
-            }
-            set 
-            {
-                urlText.Clear();
-                foreach (var line in value)
-                {
-                    urlText.AppendText(line + Environment.NewLine);
-                }
-            }
-        }
-
-        public string Path
-        {
-            get { return pathLabel.Text; }
-            set { pathLabel.Text = value; }
+            foreach (var config in ConfigManager.Configs)
+                tabControl.TabPages.Add(config.Tab);
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿namespace WebScreenSaver.Configuration
+﻿using System.Windows.Forms;
+
+namespace WebScreenSaver.Configuration
 {
     interface IConfig
     {
-        IConfigTab CreateConfigTab();
         IDataSource DataSource { get; }
+        TabPage Tab { get; }
     }
 }

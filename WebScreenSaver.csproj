@@ -106,7 +106,7 @@
   <ItemGroup>
     <Content Include="App.ico" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Configuration\ConfigManager.cs" />
     <Compile Include="ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +115,13 @@
     </Compile>
     <Compile Include="Configuration\IConfig.cs" />
     <Compile Include="Configuration\IConfigTab.cs" />
+    <Compile Include="Configuration\MainConfig.cs" />
+    <Compile Include="Configuration\MainConfigTab.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Configuration\MainConfigTab.Designer.cs">
+      <DependentUpon>MainConfigTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\WebpageConfig.cs" />
     <Compile Include="IDataSource.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -134,6 +141,9 @@
     </Compile>
     <EmbeddedResource Include="ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration\MainConfigTab.resx">
+      <DependentUpon>MainConfigTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
