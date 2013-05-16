@@ -9,7 +9,7 @@ namespace WebScreenSaver
         readonly Random _rand = new Random();
         private const string Path = @"C:\";
         private const string Filter = "*.h";
-        private const int MaxLine = 3;
+        private const int MaxLine = 7;
         private readonly List<string> _fileList = new List<string>();
 
         private readonly ActiveObject _active = new ActiveObject();
