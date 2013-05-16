@@ -21,7 +21,7 @@ namespace WebScreenSaver
             Controls.Add(_webBrowser);
             _webBrowser.Dock = DockStyle.Fill;
 
-            _timer.Interval = 2000;
+            _timer.Interval = 20000;
             _timer.Tick += OnTimerTick;
             _timer.Start();
         }

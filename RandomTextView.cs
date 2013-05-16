@@ -12,7 +12,7 @@ namespace WebScreenSaver
         public RandomTextView(RandomTextConfig config)
         {
             _config = config;
-            _timer.Interval = 2000;
+            _timer.Interval = 20000;
             _timer.Tick += OnTimerTick;
             _timer.Start();
             Text = _config.GetNext();
@@ -23,12 +23,12 @@ namespace WebScreenSaver
         void OnTimerTick(object sender, EventArgs e)
         {
             if (InvokeRequired)
-                Invoke(new MethodInvoker(() => OnTimerTick(sender, e)));
-            else
             {
-                Text = _config.GetNext();
-                Invalidate();
+                Invoke(new MethodInvoker(() => OnTimerTick(sender, e)));
+                return;
             }
+            Text = _config.GetNext();
+            Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e)
