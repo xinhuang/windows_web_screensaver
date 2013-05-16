@@ -40,7 +40,6 @@ namespace WebScreenSaver
             {
                 screensaverForms.Add(new ScreensaverForm(x, Config.CurrentView));
                 screensaverForms[x].Show();
-                break;
             }
 
             while (true)

@@ -27,8 +27,20 @@ namespace WebScreenSaver
                 Invoke(new MethodInvoker(() => OnTimerTick(sender, e)));
                 return;
             }
+            Next();
+        }
+
+        private void Next()
+        {
             Text = _config.GetNext();
             Invalidate();
+        }
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            Next();
         }
 
         protected override void OnPaint(PaintEventArgs e)
